@@ -9,7 +9,7 @@
   let wallet: BeaconWallet;
   let subscription: HubConnection;
   let blockHead: { protocol: string; level: number; lastUpdate: string };
-  let confirmed: { confirmeation: string};
+  let confirmed: { confirmation: string};
 
   const rpcUrl = "https://api.tez.ie/rpc/edonet";
   const packages: { name: string; display: string; version: number }[] = [
@@ -24,7 +24,7 @@
   const connect = async () => {
     try {
       wallet = new BeaconWallet({
-        name: "Mike wants Tezos",
+        name: "Tez Zeppelin Wallet",
         preferredNetwork: NetworkType.EDONET
       });
       await wallet.requestPermissions({
@@ -45,12 +45,15 @@
   };
 
   let success = false;
+  let loading = false;
   const transfer = async () => {
+    loading = true
     const amount = 1;
     const address = 'tz1h1LzP7U8bNNhow8Mt1TNMxb91AjG3p6KH';
     const op = await Tezos.wallet.transfer({ to: address, amount: amount }).send();
     await op.confirmation();
     success = true;
+    loading = false
   }   
 
 
@@ -189,7 +192,11 @@
     <br />
     <br />
     <div>
-      <button on:click={transfer}>Then touch here to experience a Tez Zeppelin NFT for 1 Tez</button>
+    {#if loading}
+      <img src={'images/spinning_arrows.gif'} alt="loading...">
+    {:else}
+      <button on:click={transfer}>Then touch here to experience a Tez Zeppelin NFT for 1 Tez</button>  
+    {/if} 
       <p></p>
       {#if success} 
       <div class="subtitle">        

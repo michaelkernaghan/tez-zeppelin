@@ -109,7 +109,9 @@
     }
 
     .subtitle {
-      font-size: 30px;
+      font-size: 25px;
+      font-family: cursive;
+      font-style: oblique;
       color: #333;
       margin: 10px;
     }
@@ -135,7 +137,7 @@
     }
 
     .chain-info {
-      font-size: 15px;
+      font-size: 20px;
 
       p {
         margin: 5px;
@@ -151,6 +153,8 @@
       background-color: white;
       padding: 20px;
       font-size: 20px;
+      font-family: cursive;
+      font-style: oblique;
       color: $tezos-blue;
       transition: 0.3s;
       cursor: pointer;
@@ -166,7 +170,9 @@
 
 <main>
   <div class="container">
-    <div class="title"></div>
+    <div class="subtitle">Stairway to Hodl</div>
+    <br />
+    <br />
     <div>
       <img src={'images/tezoso.png'} alt="Tezoso" width="600" height="300" />
       <br />
@@ -175,7 +181,7 @@
     <br />
     <div>
       {#if wallet}
-        <button on:click={disconnect}>Close a wallet here after the experience</button>
+        <button on:click={disconnect}>After, close your wallet by touching here</button>
       {:else}
         <button on:click={connect}>Touch here first to open a wallet</button>
       {/if}
@@ -183,16 +189,17 @@
     <br />
     <br />
     <div>
-      <button on:click={transfer}>Then touch here to experience a Tez Zeppelin NFT</button>
+      <button on:click={transfer}>Then touch here to experience a Tez Zeppelin NFT for 1 Tez</button>
       <p></p>
       {#if success} 
-      <div class="chain-info">        
-      <p>Thanks for the Tez from the band:</p>
-      <p>Robert Plaintext (#robertplaintext.tezzeppelin.tez)</p>
-      <p>Jimmy Pagefault (#jimmypagefault.tezzeppelin.tez)</p>
-      <p>John Paul Javascript (#johnpauljavascript.tezzeppelin.tez)</p>
-      <p>John Botnet (#johnbotnet.tezzeppelin.tez)</p>
+      <div class="subtitle">        
+       <p>robertplaintext.tezzeppelin.tez</p>
+      <p>jimmypagefault.tezzeppelin.tez</p>
+      <p>johnpauljavascript.tezzeppelin.tez</p>
+      <p>johnbotnet.tezzeppelin.tez</p>
       </div>
+      <br />
+      
       <img src={'images/tez-zeppelin-cover.png'} alt="Jimmy Pagefault says thanks!">
       <br />
       {/if}
@@ -200,9 +207,9 @@
     <br />
     {#if blockHead}
       <div class="chain-info">
-        <p>Protocol: {blockHead.protocol}</p>
+        <!-- <p>Protocol: {blockHead.protocol}</p>
         <p>Level: {blockHead.level}</p>
-        <p>Block timestamp: {blockHead.lastUpdate}</p>
+        <p>Block timestamp: {blockHead.lastUpdate}</p> -->
       </div>
     {/if}
     <br />

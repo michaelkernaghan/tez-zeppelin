@@ -16,7 +16,6 @@
     { name: "svelte", display: "Svelte", version: 3 },
     { name: "webpack", display: "Webpack", version: 5 },
     { name: "typescript", display: "TypeScript", version: 3 },
-    { name: "sass", display: "Sass", version: 5 },
     { name: "taquito", display: "Taquito", version: 8 },
     { name: "beacon", display: "Beacon SDK", version: 2 }
   ];
@@ -105,11 +104,11 @@
     font-size: 20px;
     max-width: 80%;
 
-    .title {
-      color: $tezos-blue;
-      font-size: 60px;
-      margin: 20px;
-    }
+    // .title {
+    //   color: $tezos-blue;
+    //   font-size: 60px;
+    //   margin: 20px;
+    // }
 
     .subtitle {
       font-size: 25px;
@@ -119,25 +118,25 @@
       margin: 10px;
     }
 
-    ul {
-      width: 30%;
-      margin: 0 auto;
-      text-align: left;
-      list-style: none;
+    // ul {
+    //   width: 30%;
+    //   margin: 0 auto;
+    //   text-align: left;
+    //   list-style: none;
 
-      li {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        padding: 3px;
+    //   li {
+    //     display: flex;
+    //     justify-content: left;
+    //     align-items: center;
+    //     padding: 3px;
 
-        img {
-          width: 30px;
-          height: 30px;
-          margin-right: 20px;
-        }
-      }
-    }
+    //     img {
+    //       width: 30px;
+    //       height: 30px;
+    //       margin-right: 20px;
+    //     }
+    //   }
+    // }
 
     .chain-info {
       font-size: 20px;

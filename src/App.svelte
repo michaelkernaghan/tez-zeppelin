@@ -11,7 +11,7 @@
   let blockHead: { protocol: string; level: number; lastUpdate: string };
   let confirmed: { confirmation: string};
 
-  const rpcUrl = "https://api.tez.ie/rpc/edonet";
+  const rpcUrl = "https://api.tez.ie/rpc/mainnet";
   const packages: { name: string; display: string; version: number }[] = [
     { name: "svelte", display: "Svelte", version: 3 },
     { name: "webpack", display: "Webpack", version: 5 },
@@ -24,11 +24,11 @@
     try {
       wallet = new BeaconWallet({
         name: "Tez Zeppelin Wallet",
-        preferredNetwork: NetworkType.EDONET
+        preferredNetwork: NetworkType.MAINNET
       });
       await wallet.requestPermissions({
         network: {
-          type: NetworkType.EDONET,
+          type: NetworkType.MAINNET,
           rpcUrl
         }
       });
@@ -47,7 +47,7 @@
   let loading = false;
   const transfer = async () => {
     loading = true
-    const amount = 1;
+    const amount = 0.1;
     const address = 'tz1h1LzP7U8bNNhow8Mt1TNMxb91AjG3p6KH';
     const op = await Tezos.wallet.transfer({ to: address, amount: amount }).send();
     await op.confirmation();
@@ -183,33 +183,45 @@
     <br />
     <div>
       {#if wallet}
-        <button on:click={disconnect}>After, close your wallet by touching here</button>
+        <div>
+          {#if loading}
+          <br />
+          <br />
+            <img src={'images/spinning_arrows.gif'} alt="loading...">
+            <br />
+            <div class="chain-info">  
+              <br/>      
+              <p>While we wait ... why not think about how much there is to know?</p>
+            </div>
+          {:else}
+          <br />
+          <br />
+            <button on:click={transfer}>Next, touch here to experience a Tez Zeppelin NFT for 0.1 Tez</button>  
+            <p></p>
+            {#if success} 
+            <button on:click={disconnect}>Close the wallet by touching here</button>
+            <br />
+            <div class="subtitle">        
+             <p>robertplaintext.tezzeppelin.tez</p>
+            <p>jimmypagefault.tezzeppelin.tez</p>
+            <p>johnpauljavascript.tezzeppelin.tez</p>
+            <p>johnbotnet.tezzeppelin.tez</p>
+            </div>
+            <br />
+            
+            <img src={'images/tez-zeppelin-cover.png'} alt="Jimmy Pagefault says thanks!">
+            <br />
+            {/if}
+          {/if} 
+          </div>
       {:else}
-        <button on:click={connect}>Touch here first to open a wallet</button>
+        <button on:click={connect}>First, touch here to open a wallet and get 0.1 tez</button>
+        <br />
+        <br />
       {/if}
     </div>
-    <br />
-    <br />
-    <div>
-    {#if loading}
-      <img src={'images/spinning_arrows.gif'} alt="loading...">
-    {:else}
-      <button on:click={transfer}>Then touch here to experience a Tez Zeppelin NFT for 1 Tez</button>  
-    {/if} 
-      <p></p>
-      {#if success} 
-      <div class="subtitle">        
-       <p>robertplaintext.tezzeppelin.tez</p>
-      <p>jimmypagefault.tezzeppelin.tez</p>
-      <p>johnpauljavascript.tezzeppelin.tez</p>
-      <p>johnbotnet.tezzeppelin.tez</p>
-      </div>
-      <br />
-      
-      <img src={'images/tez-zeppelin-cover.png'} alt="Jimmy Pagefault says thanks!">
-      <br />
-      {/if}
-    </div>
+
+   
     <br />
     {#if blockHead}
       <div class="chain-info">

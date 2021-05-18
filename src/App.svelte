@@ -10,6 +10,20 @@
   let subscription: HubConnection;
   let blockHead: { protocol: string; level: number; lastUpdate: string };
   let confirmed: { confirmation: string};
+  let title_list = [
+  {
+      "subtitle": "Stairway to Hodl",
+  },
+  {
+      "subtitle": "Doged and Confused",
+  },
+  {
+      "quote": "... waiting for the angels of Avalon, waiting for the eastern glow.",
+  },
+  {
+      "quote": "They talk of days for which they sit and wait. All will be revealed.",
+  },
+]
 
   const rpcUrl = "https://api.tez.ie/rpc/mainnet";
   const packages: { name: string; display: string; version: number }[] = [
@@ -104,12 +118,6 @@
     font-size: 20px;
     max-width: 80%;
 
-    // .title {
-    //   color: $tezos-blue;
-    //   font-size: 60px;
-    //   margin: 20px;
-    // }
-
     .subtitle {
       font-size: 25px;
       font-family: cursive;
@@ -117,26 +125,6 @@
       color: #333;
       margin: 10px;
     }
-
-    // ul {
-    //   width: 30%;
-    //   margin: 0 auto;
-    //   text-align: left;
-    //   list-style: none;
-
-    //   li {
-    //     display: flex;
-    //     justify-content: left;
-    //     align-items: center;
-    //     padding: 3px;
-
-    //     img {
-    //       width: 30px;
-    //       height: 30px;
-    //       margin-right: 20px;
-    //     }
-    //   }
-    // }
 
     .chain-info {
       font-size: 20px;
@@ -172,7 +160,7 @@
 
 <main>
   <div class="container">
-    <div class="subtitle">Stairway to Hodl</div>
+    <div class="subtitle">Doged and Confused</div>
     <br />
     <br />
     <div>
@@ -191,7 +179,7 @@
             <br />
             <div class="subtitle">  
               <br/>      
-              <p>... waiting for the angels of Avalon, waiting for the eastern glow.</p>
+              <p>They talk of days for which they sit and wait. All will be revealed.</p>
             </div>
           {:else}
           <br />
@@ -219,17 +207,8 @@
         <br />
         <br />
       {/if}
-    </div>
-
-   
+    </div>   
     <br />
-    {#if blockHead}
-      <div class="chain-info">
-        <!-- <p>Protocol: {blockHead.protocol}</p>
-        <p>Level: {blockHead.level}</p>
-        <p>Block timestamp: {blockHead.lastUpdate}</p> -->
-      </div>
-    {/if}
     <br />
   </div>
 </main>

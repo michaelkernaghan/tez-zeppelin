@@ -189,9 +189,9 @@
           <br />
             <img src={'images/spinning_arrows.gif'} alt="loading...">
             <br />
-            <div class="chain-info">  
+            <div class="subtitle">  
               <br/>      
-              <p>While we wait ... why not think about how much there is to know?</p>
+              <p>... waiting for the angels of Avalon, waiting for the eastern glow.</p>
             </div>
           {:else}
           <br />
